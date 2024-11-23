@@ -4,7 +4,6 @@ npm install expo@51.0.39 --template blank
 npm install expo@51.0.39
 npx expo install expo-font
 npm install expo-router@3.5.24
-
 npx expo install expo-font npx expo install expo-splash-screen
 npm install @react-navigation/native
 npx expo install react-native-screens npx expo install react-native-safe-area-context
@@ -18,7 +17,6 @@ npm install react-native-map
 npx expo install expo-linear-gradient
 npm install --save react-native-vector-icons
 npx expo install expo-sqlite
-
 npm install @react-navigation/native@^6.x
 npx expo install react-native-screens@3.31.1 react-native-safe-area-context
 npm install @react-navigation/native-stack@^6.x
@@ -27,12 +25,3 @@ Npx Expo run:android
 npx Expo start -c para que limpie caché
 npm i o install
 npm install @react-native-community/cli-server-api
-
-expo.dev
-
-datos 
-expo.dev
-email: jlemunozr@gmail.com
-clave: Cdev2027$
-
-npx 

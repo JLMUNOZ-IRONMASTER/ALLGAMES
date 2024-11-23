@@ -1,0 +1,32 @@
+[
+    {
+        "id":1,
+        "title":"Steam",
+        "image":"https://i.postimg.cc/8JrQWjhQ/steam.webp"
+    },
+    {
+        "id":2,
+        "title":"EA Games",
+        "image":"https://i.postimg.cc/jnzpgmgM/EA.webp"
+    },
+    {
+        "id":3,
+        "title":"Uplay",
+        "image":"https://i.postimg.cc/XpWSGNqm/Uplay.webp"
+    },
+    {
+        "id":4,
+        "title":"BattleNet",
+        "image":"https://i.postimg.cc/9w53BCp4/battlenet.webp"
+    },
+    {
+        "id":5,
+        "title":"Nintendo",
+        "image":"https://i.postimg.cc/xkZVcKN3/nintendo.webp"
+    },
+    {
+        "id":6,
+        "title":"Xbox",
+        "image":"https://i.postimg.cc/PNYn5vX1/xbox.webp"
+    }
+   ]

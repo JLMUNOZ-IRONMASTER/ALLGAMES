@@ -20,7 +20,7 @@ const LoginScreen = ({ navigation }) => {
 
     const [triggerLogin, result] = useLoginMutation()
 
-    //console.log("remember me", rememberMe)
+
 
     /* useEffect(()=>{
         if(result.status==="rejected"){
@@ -38,8 +38,7 @@ const LoginScreen = ({ navigation }) => {
     },[result,rememberMe]) */
 
     useEffect(() => {
-        //result?.isSuccess
-        //console.log("Remember me: ", rememberMe)
+       
         if (result.isSuccess) {
             console.log("Usuario logueado con éxito")
             console.log(result.data)
@@ -61,7 +60,7 @@ const LoginScreen = ({ navigation }) => {
     }, [result, rememberMe])
 
     const onsubmit = () => {
-        //console.log(email,password)       
+ 
         triggerLogin({ email, password })
     }
 
@@ -70,7 +69,7 @@ const LoginScreen = ({ navigation }) => {
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             style={styles.container}>
             <LinearGradient
-                colors={['#400962', '#11001B']}
+                colors={['#040404', '#ffffff']}
                 start={{ x: 0, y: 0 }} // esquina superior izquierda
                 end={{ x: 1, y: 1 }}   // esquina inferior derecha
                 style={styles.gradient}
@@ -98,7 +97,7 @@ const LoginScreen = ({ navigation }) => {
                     {
                         rememberMe
                             ?
-                            <Pressable onPress={() => setRememberMe(!rememberMe)}><Icon name="toggle-on" size={48} color={colors.verdeNeon} /></Pressable>
+                            <Pressable onPress={() => setRememberMe(!rememberMe)}><Icon name="toggle-on" size={48} color={colors.verdepalta} /></Pressable>
                             :
                             <Pressable onPress={() => setRememberMe(!rememberMe)}><Icon name="toggle-off" size={48} color={colors.grisClaro} /></Pressable>
                     }
@@ -121,7 +120,7 @@ const LoginScreen = ({ navigation }) => {
 
                 <View style={styles.guestOptionContainer}>
                     <Text style={styles.whiteText}>¿Solo quieres dar un vistazo?</Text>
-                    <Pressable onPress={() => dispatch(setUser({ email: "demo@mundogeek.com", token: "demo" }))}>
+                    <Pressable onPress={() => dispatch(setUser({ email: "jlemunozr@gmail.com", token: "demo" }))}>
                         <Text style={{ ...styles.whiteText, ...styles.strongText }}>Ingresa como invitado</Text>
                     </Pressable>
                 </View>
@@ -142,7 +141,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     title: {
-        color: colors.verdeNeon,
+        color: colors.verdepalta,
         fontFamily: "airstrike",
         fontSize: 24
     },

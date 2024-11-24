@@ -31,13 +31,13 @@ const SignupScreen = ({ navigation }) => {
             setErrorAddUser("Ups! No se pudo agregar el usuario")
         } else if (result.status === "fulfilled") {
             console.log("Usuario agregado con éxito")
-            //console.log(result.data)
+           
             dispatch(setUser(result.data))
         }
     }, [result])
 
     const onsubmit = () => {
-        //console.log(email,password,confirmPassword)
+      
         try {
             validationSchema.validateSync({ email, password, confirmPassword })
             setErrorEmail("")
@@ -67,7 +67,7 @@ const SignupScreen = ({ navigation }) => {
 
     return (
         <LinearGradient
-            colors={['#400962', '#11001B']}
+            colors={['#040404', '#ffffff']}
             start={{ x: 0, y: 0 }} // esquina superior izquierda
             end={{ x: 1, y: 1 }}   // esquina inferior derecha
             style={styles.gradient}
@@ -117,7 +117,7 @@ const SignupScreen = ({ navigation }) => {
             {errorAddUser && <Text style={styles.error}>{errorAddUser}</Text>}
             <View style={styles.guestOptionContainer}>
                 <Text style={styles.whiteText}>¿Solo quieres dar un vistazo?</Text>
-                <Pressable onPress={() => dispatch(setUser({ email: "demo@mundogeek.com", token: "demo" }))}>
+                <Pressable onPress={() => dispatch(setUser({ email: "jlemunozr@gmail.com", token: "2557" }))}>
                     <Text style={{ ...styles.whiteText, ...styles.strongText }}>Ingresa como invitado</Text>
                 </Pressable>
             </View>
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     title: {
-        color: colors.verdeNeon,
+        color: colors.verdepalta,
         fontFamily: "airstrike",
         fontSize: 24
     },
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     btn: {
         padding: 16,
         paddingHorizontal: 32,
-        backgroundColor: colors.verde,
+        backgroundColor: colors.verdepalta,
         borderRadius: 16,
         marginTop: 32
     },

@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { useLoginMutation } from '../../services/authService';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { insertSession, clearSessions } from '../../db';
+import { Alert } from 'react-native';
 
 const textInputWidth = Dimensions.get('window').width * 0.7
 
@@ -21,43 +22,47 @@ const LoginScreen = ({ navigation }) => {
     const [triggerLogin, result] = useLoginMutation()
 
 
-
-    /* useEffect(()=>{
-        if(result.status==="rejected"){
-            console.log("Error al iniciar sesión", result)
-        }else if(result.status==="fulfilled"){
-            console.log("Usuario logueado con éxito")
-            //console.log(result.data)
-            dispatch(setUser(result.data))
-            insertSession(result.data)
-                    .then((result)=>console.log("Éxito al guardar usuario en la db",result))
-                    .catch((error)=>console.log("Error al guardar usuario en la db", error))
-            
-        }
-        
-    },[result,rememberMe]) */
-
     useEffect(() => {
-       
+        console.log("Resultado del login:", result);
+    
         if (result.isSuccess) {
-            console.log("Usuario logueado con éxito")
-            console.log(result.data)
-            dispatch(setUser(result.data))
-
+            Alert.alert(
+                "Éxito",
+                "Usuario logueado con éxito",
+                [{ text: "OK", onPress: () => console.log("Usuario logueado con éxito") }]
+            );
+    
+            dispatch(setUser(result.data));
+    
             if (rememberMe) {
-                clearSessions().then(() => console.log("sesiones eliminadas")).catch(error => console.log("Error al eliminar las sesiones: ", error))
-                console.log("result data:", result.data)
+                clearSessions()
+                    .then(() => console.log("Sesiones eliminadas"))
+                    .catch(error => console.log("Error al eliminar las sesiones: ", error));
+    
                 insertSession({
                     localId: result.data.localId,
                     email: result.data.email,
-                    token: result.data.idToken
+                    token: result.data.idToken,
                 })
                     .then(res => console.log("Usuario insertado con éxito", res))
-                    .catch(error => console.log("Error al insertar usuario", error))
+                    .catch(error => console.log("Error al insertar usuario", error));
             }
-
         }
-    }, [result, rememberMe])
+    
+        if (result.isError) {
+            // Manejo de errores
+            const errorMessage = result.error?.data?.error?.message || "Error desconocido";
+            
+            if (result.error?.data?.error?.message === 'INVALID_LOGIN_CREDENTIALS') {
+                Alert.alert('Error de Autenticación', 'Correo electrónico o contraseña incorrectos. Intenta de nuevo.');
+            } else if (result.error?.data?.error?.message === 'INVALID_EMAIL') {
+                Alert.alert('Error de Correo', 'El correo electrónico ingresado no es válido. Por favor, verifica e intenta de nuevo.');
+            } else {
+                Alert.alert('Error desconocido', `Ocurrió un problema al intentar iniciar sesión: ${errorMessage}`);
+            }
+        }
+    }, [result, rememberMe]);
+    
 
     const onsubmit = () => {
  
